@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:country_pickers/country_pickers.dart';
 
@@ -7,7 +8,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  String dropdownValue = '+91';
+  String dropdownValue = 'Nagpur';
 
   @override
   Widget build(BuildContext context) {
@@ -43,74 +44,100 @@ class _SignUpState extends State<SignUp> {
                         style: TextStyle(
                           fontSize: 20.0,
                         ),
-                      ),
+                      ),//Register Card
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 30,
                     ),
                     Container(
+                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: TextFormField(
                         decoration: InputDecoration(
                             suffixIcon: Icon(Icons.accessibility_new_rounded),
                             border: InputBorder.none,
                             hintText: 'Name'),
-                      ),
+                      ),//Fetching Name
                     ),
                     Container(
+                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: TextFormField(
                         decoration: InputDecoration(
                             suffixIcon: Icon(Icons.mail_outline_rounded),
                             border: InputBorder.none,
                             hintText: 'Email'),
-                      ),
+                      ),//Fetching email
                     ),
                     Container(
-                      child: Row(
-                        children: [
-                          // DropdownButton<String>(
-                          //   value: dropdownValue,
-                          //   icon: Icon(Icons.arrow_drop_down),
-                          //   iconSize: 24,
-                          //   elevation: 16,
-                          //   style: TextStyle(color: Colors.white),
-                          //   // underline: Container(
-                          //   //   height: 2,
-                          //   //   color: Colors.deepPurpleAccent,
-                          //   // ),
-                          //   onChanged: (String newValue) {
-                          //     setState(() {
-                          //       dropdownValue = newValue;
-                          //     });
-                          //   },
-                          //   items: <String>['+91', '+92', '+93', '+96']
-                          //       .map<DropdownMenuItem<String>>((String value) {
-                          //     return DropdownMenuItem<String>(
-                          //       value: value,
-                          //       child: Text(value),
-                          //     );
-                          //   }).toList(),
-                          // ),
-                          TextField(
-                            decoration: InputDecoration(
-                                suffixIcon: Icon(Icons.mail_outline_rounded),
-                                border: InputBorder.none,
-                                hintText: 'Mobile Number'),
-                          ),
-                        ],
-                      ),
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                              suffixIcon: Icon(Icons.call),
+                              border: InputBorder.none,
+                              hintText: 'Mobile Number'),
+                        )//Fetching Mobile Number
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                          suffixIcon: Icon(Icons.mail_outline_rounded),
-                          border: InputBorder.none,
-                          hintText: 'Mobile Number'),
+                    Container(
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            DropdownButton<String>(
+                              value: dropdownValue,
+                              icon: Icon(Icons.arrow_drop_down),
+                              iconSize: 24,
+                              elevation: 16,
+                              style: TextStyle(color: Colors.white),
+                              underline: Container(
+                                height: 1,
+                                color: Colors.grey,
+                              ),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  dropdownValue = newValue;
+                                });
+                              },
+                              items: <String>[
+                                'Nagpur',
+                                'Mumbai',
+                                'Delhi',
+                                'Pune'
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),//City DropDown
+                          ],
+                        )),
+                    SizedBox(
+                      height: 20,
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Referral Code?"),
+                        SizedBox(width: 5),
+                        InkWell(
+                            onTap: () {},
+                            child: Text(
+                              'Apply',
+                              style: TextStyle(
+                                  color: Colors.deepOrange,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline),
+                            )),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 50,
+                    )
                   ],
                 ),
               ),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(162, 562, 100, 100),
+              padding: EdgeInsets.fromLTRB(162, 690, 100, 100),
               child: FlatButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
@@ -118,7 +145,9 @@ class _SignUpState extends State<SignUp> {
                 color: Colors.deepOrange,
                 textColor: Colors.white,
                 padding: EdgeInsets.all(8.0),
-                onPressed: () {},
+                onPressed: () {
+                  //Navigator.pop(context);
+                },
                 child: Text(
                   "go".toUpperCase(),
                   style: TextStyle(
