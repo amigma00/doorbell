@@ -7,6 +7,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  String dropdownValue = '+91';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,49 +48,64 @@ class _SignUpState extends State<SignUp> {
                     SizedBox(
                       height: 50,
                     ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          suffixIcon: Icon(Icons.accessibility_new_rounded),
-                          border: InputBorder.none,
-                          hintText: 'Name'),
+                    Container(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            suffixIcon: Icon(Icons.accessibility_new_rounded),
+                            border: InputBorder.none,
+                            hintText: 'Name'),
+                      ),
                     ),
-                    TextFormField(
+                    Container(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            suffixIcon: Icon(Icons.mail_outline_rounded),
+                            border: InputBorder.none,
+                            hintText: 'Email'),
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          // DropdownButton<String>(
+                          //   value: dropdownValue,
+                          //   icon: Icon(Icons.arrow_drop_down),
+                          //   iconSize: 24,
+                          //   elevation: 16,
+                          //   style: TextStyle(color: Colors.white),
+                          //   // underline: Container(
+                          //   //   height: 2,
+                          //   //   color: Colors.deepPurpleAccent,
+                          //   // ),
+                          //   onChanged: (String newValue) {
+                          //     setState(() {
+                          //       dropdownValue = newValue;
+                          //     });
+                          //   },
+                          //   items: <String>['+91', '+92', '+93', '+96']
+                          //       .map<DropdownMenuItem<String>>((String value) {
+                          //     return DropdownMenuItem<String>(
+                          //       value: value,
+                          //       child: Text(value),
+                          //     );
+                          //   }).toList(),
+                          // ),
+                          TextField(
+                            decoration: InputDecoration(
+                                suffixIcon: Icon(Icons.mail_outline_rounded),
+                                border: InputBorder.none,
+                                hintText: 'Mobile Number'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    TextField(
                       decoration: InputDecoration(
                           suffixIcon: Icon(Icons.mail_outline_rounded),
                           border: InputBorder.none,
-                          hintText: 'Email'),
-                    ),
-                    SizedBox(
-                      height: 85,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: CountryPickerDropdown(
-                            initialValue: 'in',
-                            itemBuilder: _buildDropdownItem,
-                            onValuePicked: (Country country) {
-                              print("${country.name}");
-                            },
-                          ),
-                        ),
-                        Expanded(
-                          child: TextField(
-                            keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Phone Number",
-                            ),
-                            onChanged: (value) {
-                              // this.phoneNo=value;
-                              print(value);
-                            },
-                          ),
-                        ),
-                      ],
+                          hintText: 'Mobile Number'),
                     ),
                   ],
-
                 ),
               ),
             ),
@@ -111,22 +128,6 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
             //go buttn
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("New User?"),
-            SizedBox(width: 5),
-            InkWell(
-                onTap: () {},
-                child: Text(
-                  'Sign Up',
-                  style: TextStyle(
-                      color: Colors.deepOrange,
-                      fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.underline),
-                )),
           ],
         ),
       ]),
